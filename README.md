@@ -8,6 +8,15 @@ python -m pip install git+https://github.com/Jegarde/RecNet-Login.git#egg=recnet
 ```
 
 # Getting started
+The absolute basics. This is basically all you need to know to get started.
+```py
+from recnetlogin import login_to_recnet
+
+login = login_to_recnet(username, password)
+
+print(login)
+```
+
 A simple example on how the module is used. Another example script is found [here](https://github.com/Jegarde/RecNet-Login/blob/main/example.py).
 ```py
 import sys
