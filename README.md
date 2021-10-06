@@ -30,7 +30,7 @@ print("Account data:", account_data)
 The function returns the following data if the login was SUCCESSFUL;
 ```json
 {
-    "success": true
+    "success": true,
     "bearer_token": "Bearer X",
     "account_data": {
        "availableUsernameChanges": 0,
