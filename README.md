@@ -1,7 +1,7 @@
 # RecNet-Login
 This is a Python module, that allows you to acquire your RecNet authorization bearer token with your account credentials!
 
-# Usage
+# Getting started
 A simple example on how the module is used.
 ```py
 from recnetlogin import login_to_recnet
@@ -24,4 +24,34 @@ account_data = login['account_data']
 print("Bearer token:", bearer_token)
 print("Account data:", account_data)
 
+```
+
+# Details
+The function returns the following data if the login was SUCCESSFUL;
+```json
+{
+    "success": true
+    "bearer_token": "Bearer X",
+    "account_data": {
+       "availableUsernameChanges": 0,
+       "email": "coach@email.com",
+       "phone": "",
+       "birthday":"0000-00-00T00:00:00Z",
+       "accountId": 1,
+       "username": "Coach",
+       "displayName": "Coach",
+       "profileImage": "DefaultProfileImage",
+       "bannerImage": "",
+       "isJunior": false,
+       "platforms": 0,
+       "createdAt": "0000-00-00T00:00:00.000Z"
+    }
+}
+```
+and if it was UNSUCCESSFUL:
+```json
+{
+    "success": false,
+    "error": "specified error"
+}
 ```
