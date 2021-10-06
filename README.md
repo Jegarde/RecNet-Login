@@ -12,7 +12,7 @@ The absolute basics. This is basically all you need to know to get started.
 ```py
 from recnetlogin import login_to_recnet
 
-login = login_to_recnet(username, password)
+login = login_to_recnet("username", "password")
 
 print(login)
 ```
