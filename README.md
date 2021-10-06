@@ -1,5 +1,5 @@
 # RecNet-Login
-This is a Python package, that allows you to acquire your RecNet bearer token with your account credentials!
+This is a Python package, that allows you to acquire your [RecNet](https://rec.net/) bearer token with your account credentials!
 
 # Installation
 Done via git:
@@ -33,7 +33,7 @@ print("Account data:", account_data)
 ```
 
 # Details
-The function returns the following data if the login was SUCCESSFUL;
+The function `login_to_recnet(username, password)` returns the following data if the login was SUCCESSFUL;
 ```json
 {
     "success": true,
