@@ -1,8 +1,14 @@
 # RecNet-Login
 This is a Python module, that allows you to acquire your RecNet authorization bearer token with your account credentials!
 
+# Installation
+Done via git:
+```py
+python -m pip install git+https://github.com/Jegarde/RecNet-Login.git#egg=recnetlogin
+```
+
 # Getting started
-A simple example on how the module is used.
+A simple example on how the module is used. An example script is found [here](https://github.com/Jegarde/RecNet-Login/blob/main/example.py).
 ```py
 from recnetlogin import login_to_recnet
 
