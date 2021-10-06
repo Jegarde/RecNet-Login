@@ -67,3 +67,4 @@ You can also directly run the [login.py](https://github.com/Jegarde/RecNet-Login
 ```py
 python login.py USERNAME PASSWORD
 ```
+If successful, it will print your bearer token and account data.
