@@ -14,8 +14,16 @@ if not login['success']:  # If the login was successful, this will be true
     sys.exit(login['error'])  # Print error included in the returned dictionary
 
 # Login succeeded, export details
+name = login['account_data']['displayName']
+acc_data = login['account_data']
+b_token = login['bearer_token']
+account_details = ""
+for key in acc_data:  # Display the details nicely formatted
+    account_details += f"{key}: {acc_data[key]}\n"
+
+# Save details
 file_name = "token_details.txt"
 with open(file_name, "w") as txt:
-    txt.write(f"Hello, {login['account_data']['displayName']}!\n\n{login['bearer_token']}\n\n{login['account_data']}")
+    txt.write(f"Hello, {name}!\n\n{b_token}\n\n{account_details}")
 os.startfile(file_name)  # Open the text file
-sys.exit("Successful!")
+sys.exit("Successful!")  # Close
