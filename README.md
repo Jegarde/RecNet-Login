@@ -8,8 +8,9 @@ python -m pip install git+https://github.com/Jegarde/RecNet-Login.git#egg=recnet
 ```
 
 # Getting started
-A simple example on how the module is used. An example script is found [here](https://github.com/Jegarde/RecNet-Login/blob/main/example.py).
+A simple example on how the module is used. Another example script is found [here](https://github.com/Jegarde/RecNet-Login/blob/main/example.py).
 ```py
+import sys
 from recnetlogin import login_to_recnet
 
 # RecNet account credentials
@@ -63,7 +64,7 @@ and if it was UNSUCCESSFUL:
 ```
 
 # Arguments
-You can also directly run the [login.py](https://github.com/Jegarde/RecNet-Login/blob/main/recnetlogin/login.py) file. You can also run it with `username` and `password` arguments.
+You can also directly run the [login.py](https://github.com/Jegarde/RecNet-Login/blob/main/recnetlogin/login.py) file. You can also run it with `username` and `password` arguments. Make sure to run it from the terminal to prevent it from shutting down on finish.
 ```py
 python login.py USERNAME PASSWORD
 ```
