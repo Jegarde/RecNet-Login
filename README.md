@@ -17,7 +17,7 @@ login = login_to_recnet("username", "password")
 print(login)
 ```
 
-A simple example on how the module is used. Another example script is found [here](https://github.com/Jegarde/RecNet-Login/blob/main/example.py).
+A simple example on how the package is used. Another example script is found [here](https://github.com/Jegarde/RecNet-Login/blob/main/example.py).
 ```py
 import sys
 from recnetlogin import login_to_recnet
@@ -29,7 +29,7 @@ password = ''
 # Login function from the module
 login = login_to_recnet(username, password)
 
-if not login['success']:  # If the login was successful, this will be true
+if not login['success']:  # If the login was successful, the variable will be true
     # Login failed.
     sys.exit(login['error'])  # Print error included in the returned dictionary
 
