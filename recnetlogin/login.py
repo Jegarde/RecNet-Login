@@ -6,7 +6,10 @@ def login_to_recnet(username, password):
     session = requests.Session()
 
     # GET REQUEST VERIFICATION TOKEN
-    r = session.get("https://auth.rec.net/Account/Login")
+    try:
+        r = session.get("https://auth.rec.net/Account/Login")
+    except requests.exceptions.ConnectionError:  # No internet connection
+        return {"success": False, "error": "Failed to connect to RR API. Check your internet connection and try again."}
     login_html = str(r.content)  # Save the HTML from the login page
     # Gather the request verification token from the HTML
     request_verification_token = \
@@ -22,7 +25,10 @@ def login_to_recnet(username, password):
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
     body = f"Input.Username={username}&Input.Password={password}&Input.RememberMe=true&button=login" \
            f"&__RequestVerificationToken={request_verification_token}&Input.RememberMe=false "
-    r = session.post(url, headers=headers, data=body, allow_redirects=True)
+    try:
+        r = session.post(url, headers=headers, data=body, allow_redirects=True)
+    except requests.exceptions.ConnectionError:  # No internet connection
+        return {"success": False, "error": "Failed to connect to RR API. Check your internet connection and try again."}
     url = r.url
 
     # GATHER AUTHORIZATION TOKEN
@@ -35,10 +41,13 @@ def login_to_recnet(username, password):
 
     # TEST TOKEN
     bearer_token = "Bearer " + token
-    r = session.get("https://accounts.rec.net/account/me", headers={"Authorization": bearer_token})
+    try:
+        r = session.get("https://accounts.rec.net/account/me", headers={"Authorization": bearer_token})
+    except requests.exceptions.ConnectionError:  # No internet connection
+        return {"success": False, "error": "Failed to connect to RR API. Check your internet connection and try again."}
     if not r.ok:
         # Invalid token!
-        return {"success": False, "error": "Something went wrong!"}
+        return {"success": False, "error": f"Something went wrong while checking the token! Status: {r.status_code}"}
     acc_data = r.json()
 
     # SUCCESSFULLY ACQUIRED TOKEN, RETURN
