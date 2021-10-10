@@ -5,7 +5,7 @@ setup(
     name='recnetlogin',
     author='Jegarde',
     url='https://github.com/Jegarde/RecNet-Login/',
-    version=0.1,
+    version=0.2,
     packages=['recnetlogin'],
     license='MIT',
     description='A package that allows you to acquire a bearer token from RecNet with account credentials.',
