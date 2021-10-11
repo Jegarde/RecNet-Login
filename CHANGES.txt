@@ -1,1 +1,4 @@
+v0.2, 2021-10-11 -- Error Handling
+- Added error handling to when the user has no internet connection
+
 v0.1, 2021-10-6 -- Initial Creation
