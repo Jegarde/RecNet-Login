@@ -16,7 +16,7 @@ username = ""
 password = ""
 login = login_to_recnet(username, password)  # Login with account credentials
 
-print(login.access_token)  # Print out the access token
+print(login.access_token)  # Print out the bearer token
 ```
 
 # Usage
@@ -38,11 +38,11 @@ print("Success:", login.success)  # If login was successful (It should raise an 
 print()
 print("Access token:", login.access_token)  # Access token / Bearer token
 print("Access token expiration:", login.access_expiration)  # Its expiration Unix timestamp
-print("Access token decoded:", login.decoded_access_token)  # Decoded
+print("Access token decoded:", login.access_decoded)  # Decoded
 print()
 print("Id token:", login.id_token)  # Id token
 print("Id token expiration:", login.id_expiration)  # Its expiration Unix timestamp
-print("Id token decoded:", login.decoded_id_token)  # Decoded
+print("Id token decoded:", login.id_decoded)  # Decoded
 print()
 print("Data:", login.data)  # Account data from /account/me
 ```
@@ -55,6 +55,20 @@ try:
 except recnetlogin.login.InvalidCredentials:
     print("Unsuccess!")  # Incorrect account credentials.
 ```
+
+# Attributes
+If the login was successful, the following attributes will be available:
+- `success` | If login was successful
+
+- `access_token` | Your bearer authorization token
+- `access_expiration` | Bearer token's expiration Unix timestamp
+- `access_decoded` | Decoded bearer token
+
+- `id_token` | Your id token
+- `id_expiration` | Id token's expiration Unix timestamp
+- `id_decoded` | Decoded id token
+
+- `data` | Your data from /account/me
 
 # Arguments
 You can also directly run the [login.py](https://github.com/Jegarde/RecNet-Login/blob/main/recnetlogin/login.py) file. You can also run it with `username` and `password` arguments. Make sure to run it from the terminal to prevent it from shutting down on finish.
