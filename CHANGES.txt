@@ -1,4 +1,7 @@
+v0.3, 2021-10-20 -- Revamped
+- Revamped the whole package! This breaks all scripts using previous versions of the package. Please check out the documentation.
+
 v0.2, 2021-10-11 -- Error Handling
-- Added error handling to when the user has no internet connection
+- Added error handling to when the user has no internet connection [OUTDATED]
 
 v0.1, 2021-10-6 -- Initial Creation
