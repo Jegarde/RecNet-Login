@@ -1,3 +1,7 @@
+v0.4, 2021-10-20 -- Renamed Attributes
+- `decoded_access_token` -> `access_decoded`
+- `decoded_id_token` -> `id_decoded`
+
 v0.3, 2021-10-20 -- Revamped
 - Revamped the whole package! This breaks all scripts using previous versions of the package. Please check out the documentation.
 
