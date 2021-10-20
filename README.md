@@ -1,5 +1,5 @@
 # RecNet-Login
-This is a Python package, that allows you to acquire your [RecNet](https://rec.net/) bearer token with your account credentials!
+This is a Python package, that allows you to acquire your [RecNet](https://rec.net/) bearer token and more with your account credentials!
 
 # Installation
 Done via git:
@@ -12,64 +12,48 @@ The absolute basics. This is basically all you need to know to get started.
 ```py
 from recnetlogin import login_to_recnet
 
-login = login_to_recnet("username", "password")
+username = ""
+password = ""
+login = login_to_recnet(username, password)  # Login with account credentials
 
-print(login)
+print(login.access_token)  # Print out the access token
 ```
 
-A simple example on how the package is used. Another example script is found [here](https://github.com/Jegarde/RecNet-Login/blob/main/example.py).
+# Usage
+Logging in to RecNet is very simple with this package.
+
+Begin by importing the package:
 ```py
-import sys
 from recnetlogin import login_to_recnet
-
-# RecNet account credentials
-username = ''
-password = ''
-
-# Login function from the module
-login = login_to_recnet(username, password)
-
-if not login['success']:  # If the login was successful, the variable will be true
-    # Login failed.
-    sys.exit(login['error'])  # Print error included in the returned dictionary
-
-# If login succeeded, print the details
-bearer_token = login['bearer_token']
-account_data = login['account_data']
-
-print("Bearer token:", bearer_token)
-print("Account data:", account_data)
-
 ```
 
-# Details
-The function `login_to_recnet(username, password)` returns the following data if the login was SUCCESSFUL;
-```json
-{
-    "success": true,
-    "bearer_token": "Bearer X",
-    "account_data": {
-       "availableUsernameChanges": 0,
-       "email": "coach@email.com",
-       "phone": "",
-       "birthday":"0000-00-00T00:00:00Z",
-       "accountId": 1,
-       "username": "Coach",
-       "displayName": "Coach",
-       "profileImage": "DefaultProfileImage",
-       "bannerImage": "",
-       "isJunior": false,
-       "platforms": 0,
-       "createdAt": "0000-00-00T00:00:00.000Z"
-    }
-}
+Now let's try logging in:
+```py
+login = login_to_recnet("Coach", "recnet87")  # Let's pretend these are valid credentials
 ```
-and if it was UNSUCCESSFUL:
-```json
-{
-    "success": false,
-    "error": "specified error"
-}
+
+We now have a `login_to_recnet` object called `login`. All this information can be gotten from the object:
+```py
+print("Success:", login.success)  # If login was successful (It should raise an exception if unsuccessful, though)
+print()
+print("Access token:", login.access_token)  # Access token / Bearer token
+print("Access token expiration:", login.access_expiration)  # Its expiration Unix timestamp
+print("Access token decoded:", login.decoded_access_token)  # Decoded
+print()
+print("Id token:", login.id_token)  # Id token
+print("Id token expiration:", login.id_expiration)  # Its expiration Unix timestamp
+print("Id token decoded:", login.decoded_id_token)  # Decoded
+print()
+print("Data:", login.data)  # Account data from /account/me
+```
+
+If the login was unsuccessful, it will raise `InvalidCredentials`.
+```py
+try:
+    login = login_to_recnet("Coach", "recnet87")
+    print("Success!")  # Successfully logged in without errors!
+except recnetlogin.login.InvalidCredentials:
+    print("Unsuccess!")  # Incorrect account credentials.
 ```
 
 # Arguments
@@ -77,7 +61,7 @@ You can also directly run the [login.py](https://github.com/Jegarde/RecNet-Login
 ```py
 python login.py USERNAME PASSWORD
 ```
-If successful, it will print your bearer token and account data.
+If successful, it will print all possible data.
 
 # Alternative ways of getting your bearer token
 - Run this JS script on your browser's DevTools console.
