@@ -14,12 +14,12 @@ class login_to_recnet():
 
         # Access token / Bearer token
         self.access_token = None  # The bearer token if successful
-        self.decoded_access_token = None  # Decoded bearer token if successful
+        self.access_decoded = None  # Decoded bearer token if successful
         self.access_expiration = 0  # Unix timestamp for bearer expiration
 
         # Id token
         self.id_token = None  # Id token if successful
-        self.decoded_id_token = None  # Decoded id token if successful
+        self.id_decoded = None  # Decoded id token if successful
         self.id_expiration = 0  # Unix timestamp for id expiration
 
         self.data = {}  # Data from account/me if successful
@@ -81,8 +81,8 @@ class login_to_recnet():
         self.success = True  # Login successful!
         self.access_token = bearer_token  # Bearer token
         self.id_token = id_token  # Id token
-        self.decoded_access_token = decoded_access  # Decoded bearer token
-        self.decoded_id_token = decoded_id  # Decoded id token
+        self.access_decoded = decoded_access  # Decoded bearer token
+        self.id_decoded = decoded_id  # Decoded id token
         self.access_expiration = access_expire_unix  # Unix timestamp for bearer expiration
         self.id_expiration = id_expire_unix  # Unix timestamp for id expiration
         self.data = acc_data
