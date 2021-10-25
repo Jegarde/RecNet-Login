@@ -2,7 +2,7 @@
 This is a Python package, that allows you to acquire your [RecNet](https://rec.net/) bearer token and more with your account credentials!
 
 # Installation
-Done via git:
+Done via [git](https://git-scm.com):
 ```py
 python -m pip install git+https://github.com/Jegarde/RecNet-Login.git#egg=recnetlogin
 ```
