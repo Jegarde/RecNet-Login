@@ -7,7 +7,7 @@ USERNAME: str = ""
 PASSWORD: str = ""
 
 async def main() -> None:
-    rnl = RecNetLoginAsync(username=USERNAME, password=PASSWORD)
+    rnl = RecNetLoginAsync(username=USERNAME, password=PASSWORD, prompt_2fa=True)
     
     token = await rnl.get_token(include_bearer=True)
     decoded_token = await rnl.get_decoded_token()

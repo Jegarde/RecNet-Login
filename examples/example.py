@@ -5,7 +5,7 @@ USERNAME: str = ""
 PASSWORD: str = ""
 
 def main() -> None:
-    rnl = RecNetLogin(username=USERNAME, password=PASSWORD)
+    rnl = RecNetLogin(username=USERNAME, password=PASSWORD, prompt_2fa=True)
 
     token = rnl.get_token(include_bearer=True)
     decoded_token = rnl.get_decoded_token()
