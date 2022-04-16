@@ -7,7 +7,7 @@ class BaseClient():
         username: str, 
         password: str,
         prompt_2fa: bool = False,
-        session: aiohttp.ClientSession | requests.Session = None,
+        session: aiohttp.ClientSession or requests.Session = None,
         **kwargs
     ) -> None:
         # RecNet credentials
