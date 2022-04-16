@@ -1,5 +1,6 @@
 import asyncio
 import sys
+import aiohttp
 from recnetlogin import RecNetLoginAsync  # Include the async client
 
 # Insert your Rec Room account credentials
@@ -7,10 +8,17 @@ USERNAME: str = ""
 PASSWORD: str = ""
 
 async def main() -> None:
-    rnl = RecNetLoginAsync(username=USERNAME, password=PASSWORD, prompt_2fa=True)
+    session = aiohttp.ClientSession()
+    rnl = RecNetLoginAsync(
+        username=USERNAME, 
+        password=PASSWORD, 
+        prompt_2fa=True, 
+        session=session
+    )
     
-    token = await rnl.get_token(include_bearer=True)
-    decoded_token = await rnl.get_decoded_token()
+    async with session as session:
+        token = await rnl.get_token(include_bearer=True)
+        decoded_token = await rnl.get_decoded_token()
     
     print(f"{token=}\n{decoded_token=}")
 
