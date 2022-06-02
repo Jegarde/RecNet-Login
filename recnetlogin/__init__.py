@@ -1,1 +1,2 @@
-from .login import login_to_recnet
+from .async_client import RecNetLoginAsync
+from .sync_client import RecNetLogin
