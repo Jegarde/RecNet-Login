@@ -33,5 +33,5 @@ setup(
         "urllib3==1.26.8",
         "yarl==1.7.2"
     ],
-    python_requires='>=3.9.0'
+    python_requires='>=3.8.0'
 )
