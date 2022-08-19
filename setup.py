@@ -5,10 +5,10 @@ setup(
     name='recnetlogin',
     author='Jegarde',
     url='https://github.com/Jegarde/RecNet-Login/',
-    version=1.0,
+    version=1.1,
     packages=['recnetlogin'],
     license='MIT',
-    description='A Python package, that allows you to acquire your RecNet authorization bearer token with your account credentials!',
+    description='A Python package that allows you to acquire your RecNet authorization bearer token with your account credentials!',
     install_requires=[
         "aiodns==3.0.0",
         "aiohttp==3.8.1",
@@ -28,7 +28,7 @@ setup(
         "pycares==4.1.2",
         "pycparser==2.21",
         "PyJWT==2.3.0",
-        "requests==2.27.1",
+        "httpx==0.23.0",
         "soupsieve==2.3.1",
         "urllib3==1.26.8",
         "yarl==1.7.2"

@@ -1,5 +1,5 @@
 import aiohttp
-import requests
+import httpx
 
 class BaseClient():
     def __init__(
@@ -7,7 +7,7 @@ class BaseClient():
         username: str, 
         password: str,
         prompt_2fa: bool = False,
-        session: aiohttp.ClientSession or requests.Session = None,
+        session: aiohttp.ClientSession or httpx.Client = None,
         **kwargs
     ) -> None:
         # RecNet credentials

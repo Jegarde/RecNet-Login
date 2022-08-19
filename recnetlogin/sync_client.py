@@ -1,6 +1,6 @@
-import requests
 import time
 import traceback
+import httpx
 from .api_info import ApiInfo
 from .base_client import BaseClient
 from .helpers import *
@@ -12,16 +12,16 @@ class RecNetLogin(BaseClient):
     ) -> None:
         BaseClient.__init__(self, **kwargs)
         # HTTP session
-        self.__session = self.session if isinstance(self.session, requests.Session) else requests.Session()
+        self.__session = self.session if isinstance(self.session, httpx.Client) else httpx.Client()
        
     def __login(self) -> None:
         resp = self.__session.get(ApiInfo.URL)
         html = resp.content
+        
         rvt = parse_rvt(html=html)
-                
         body = create_body(username=self.username, password=self.password, rvt=rvt)
             
-        resp = self.__session.post(ApiInfo.URL + ApiInfo.PARAMS, headers=ApiInfo.HEADERS, data=body, allow_redirects=True)
+        resp = self.__session.post(ApiInfo.URL + ApiInfo.PARAMS, headers=ApiInfo.HEADERS, data=body, follow_redirects=True)
         try:
             self.bearer_token = parse_token(resp.url)
             self.decoded = decode_token(self.bearer_token)

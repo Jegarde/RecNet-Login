@@ -1,6 +1,6 @@
 import jwt
 from bs4 import BeautifulSoup
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs, quote
 from .api_info import ApiInfo
 from .exceptions import *
 
@@ -20,10 +20,10 @@ def decode_token(token: str) -> dict:
 def parse_rvt(html: str) -> str:
     soup = BeautifulSoup(html, features="html.parser")
     rvt = soup.find('input', {'name': '__RequestVerificationToken'}).get('value')  # Acquire the Request Verification Token
-    return rvt
+    return quote(rvt)
 
 def create_body(username: str, password: str, rvt: str) -> str:
-    body = ApiInfo.BODY.format(name=username, password=password, rvt=rvt)
+    body = ApiInfo.BODY.format(name=quote(username), password=quote(password), rvt=rvt)
     return body
 
 def create_twofa_body(twofa_code: str, rvt: str) -> str:
