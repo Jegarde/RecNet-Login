@@ -5,7 +5,7 @@ This is the rewritten version! For the older version, [visit the legacy branch.]
 # Installation
 Done via [git](https://git-scm.com):
 ```py
-python -m pip install git+https://github.com/Jegarde/RecNet-Login.git#egg=recnetlogin
+python -m pip install -U git+https://github.com/Jegarde/RecNet-Login.git#egg=recnetlogin
 ```
 
 # Usage
