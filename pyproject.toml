@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "recnetlogin"
+version = "0.0.1"
+authors = [
+    { name="Jegarde"}
+]
+description = "RecNetLogin is a Python package that allows you to acquire your RecNet bearer token and more with your account credentials!"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Jegarde/RecNet-Login"
+"Bug Tracker" = "https://github.com/Jegarde/RecNet-Login/issues"
