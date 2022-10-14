@@ -9,9 +9,9 @@ This is the rewritten version! For the older version, [visit the legacy branch.]
 - Detailed exceptions
 
 # Installation
-Done via [git](https://git-scm.com):
+Done via pip:
 ```py
-python -m pip install -U git+https://github.com/Jegarde/RecNet-Login.git#egg=recnetlogin
+pip install -U recnetlogin
 ```
 
 # Usage
