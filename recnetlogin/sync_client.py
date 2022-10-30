@@ -41,7 +41,7 @@ class RecNetLogin(BaseClient):
                 
         body = create_twofa_body(twofa_code=twofa_code, rvt=rvt)
 
-        resp = self.__session.post(ApiInfo.TWOFA_URL + ApiInfo.TWOFA_PARAMS, headers=ApiInfo.HEADERS, data=body, allow_redirects=True)
+        resp = self.__session.post(ApiInfo.TWOFA_URL + ApiInfo.TWOFA_PARAMS, headers=ApiInfo.HEADERS, data=body, follow_redirects=True)
 
         try:
             self.bearer_token = parse_token(resp.url)
