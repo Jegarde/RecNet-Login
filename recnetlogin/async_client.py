@@ -50,6 +50,13 @@ class RecNetLoginAsync(BaseClient):
                 traceback.print_exc()
                 return
 
+    async def close(self) -> None:
+        """
+        Closes the AIOHTTP client
+        """
+        
+        await self.__session.close()
+
     def __renew_token(func):
         async def wrapper(self, *args, **kwargs) -> func:        
             if not self.bearer_token or not self.decoded or int(time.time()) >= self.decoded['exp']:

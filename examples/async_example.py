@@ -22,6 +22,8 @@ async def main() -> None:
     
     print(f"{token=}\n{decoded_token=}")
 
+    await rnl.close()
+
 if __name__ == "__main__":
     if sys.version_info[0] == 3 and sys.version_info[1] >= 8 and sys.platform.startswith('win'):  # fix "RuntimeError: Event Loop is closed" exception with asyncio on Windows
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())

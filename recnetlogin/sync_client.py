@@ -50,6 +50,13 @@ class RecNetLogin(BaseClient):
             print(debug_text("Authenticator code is wrong!"))
             return self.__login_2fa() 
 
+    def close(self):
+        """
+        Closes the HTTPX client
+        """
+        
+        self.__session.close()
+
     def __renew_token(func):
         def wrapper(self, *args, **kwargs) -> func:        
             if not self.bearer_token or not self.decoded or int(time.time()) >= self.decoded['exp']:

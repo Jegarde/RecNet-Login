@@ -30,6 +30,8 @@ def main() -> None:
         return
     
     print(f"{token=}\n{decoded_token=}")
+    
+    rnl.close()
 
 if __name__ == "__main__":
     main()
