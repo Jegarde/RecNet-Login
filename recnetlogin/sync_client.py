@@ -33,7 +33,10 @@ class RecNetLogin(BaseClient):
             return
         
     def __login_2fa(self) -> None:
-        twofa_code = prompt_2fa()
+        if self.given_2fa:
+            twofa_code = self.given_2fa
+        else:
+            twofa_code = prompt_2fa()
 
         resp = self.__session.get(ApiInfo.TWOFA_URL)
         html = resp.content
