@@ -51,6 +51,7 @@ class RecNetLogin(BaseClient):
             self.decoded = decode_token(self.bearer_token)   
         except TwoFactorAuthenticatorEnabled:
             print(debug_text("Authenticator code is wrong!"))
+            raise TwoFactorAuthenticaorCodeWrong
             return self.__login_2fa() 
 
     def close(self):
