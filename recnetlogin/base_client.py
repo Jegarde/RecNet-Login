@@ -7,6 +7,7 @@ class BaseClient():
         username: str, 
         password: str,
         prompt_2fa: bool = False,
+        given_2fa: str = "",
         session: aiohttp.ClientSession or httpx.Client = None,
         **kwargs
     ) -> None:
@@ -20,3 +21,5 @@ class BaseClient():
         self.decoded = {}
         # Whether or not to prompt for 2fa code
         self.prompt_2fa = prompt_2fa
+        # 2FA token
+        self.given_2fa = given_2fa
