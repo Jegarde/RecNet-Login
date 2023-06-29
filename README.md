@@ -1,4 +1,4 @@
-# RecNet-Login
+# RecNet-Login 2
 This is a Python package that allows you to acquire your [RecNet](https://rec.net/) bearer token and more with your ASP.NET Core Identity!
 This is a rewritten version. Previous versions do not work anymore.
 
@@ -9,22 +9,21 @@ This is a rewritten version. Previous versions do not work anymore.
 - Detailed exceptions
 
 # Installation
-Done via pip:
-```py
-pip install -U recnetlogin
-```
+Download the recnetlogin folder and place it in your project.
+
+pip installation soon.
 
 # Setup
 ### Gathering your ASP.NET Core Identity
 1. Login to [RecNet](https://rec.net/)
 2. Open your browser's DevTools (Inspect Element)
 3. Open the `Storage` tab on the top
-4. Locate `Cookies` on the directory
+4. Locate `Cookies` > `https://auth.rec.net` on the directory
 5. Paste in `.AspNetCore.Identity.Application` to the filter or manually search for it
 6. Double click the value and copy it 
 ![image](https://github.com/Jegarde/RecNet-Login/assets/13438202/1fa41865-f8e4-43d8-9749-5b8dec070e93)
 
-### Option 1. Storing it in your environment variables (Windows)
+### Option 1/2 Storing it in your environment variables (Windows)
 1. Search for environment variables and open the first result
 
 ![image](https://github.com/Jegarde/RecNet-Login/assets/13438202/c35ebeb9-de31-46ba-a264-f02138560321)
@@ -45,7 +44,7 @@ pip install -U recnetlogin
 
 6. Restart your computer for it to take effect
 
-### Option 2. Storing it in a .env.secret file
+### Option 2/2 Storing it in a .env.secret file
 1. Make a new file named `.env.secret` in your project's directory
 2. Type `RN_COOKIE=` in the file and paste the copied value
 3. If the file is not in your project's directory, make sure to specify it
@@ -61,6 +60,18 @@ from RecNetLogin import RecNetLogin
 
 rnl = RecNetLogin()
 token = rnl.get_token()
-decoded_token = rnl.get_decoded_token()
+decoded_token = rnl.get_decoded_token()  # JWT decoded
 print(token, decoded_token)
+```
+
+### Making authorized calls
+```py
+from recnetlogin import RecNetLogin
+
+rnl = RecNetLogin()
+
+# Fetch using RecNetLogin's HTTPX client
+r = rnl.client.get("https://accounts.rec.net/account/me")
+for key, value in r.json().items():
+    print(key, value)
 ```
