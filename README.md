@@ -14,8 +14,8 @@ Done via pip:
 pip install -U recnetlogin
 ```
 
-# Usage
-## Gathering your ASP.NET Core Identity
+# Setup
+### Gathering your ASP.NET Core Identity
 1. Login to [RecNet](https://rec.net/)
 2. Open your browser's DevTools (Inspect Element)
 3. Open the `Storage` tab on the top
@@ -24,7 +24,7 @@ pip install -U recnetlogin
 6. Double click the value and copy it 
 ![image](https://github.com/Jegarde/RecNet-Login/assets/13438202/1fa41865-f8e4-43d8-9749-5b8dec070e93)
 
-## Storing it in your environment variables (Windows)
+### Option 1. Storing it in your environment variables (Windows)
 1. Search for environment variables and open the first result
 
 ![image](https://github.com/Jegarde/RecNet-Login/assets/13438202/c35ebeb9-de31-46ba-a264-f02138560321)
@@ -45,3 +45,22 @@ pip install -U recnetlogin
 
 6. Restart your computer for it to take effect
 
+### Option 2. Storing it in a .env.secret file
+1. Make a new file named `.env.secret` in your project's directory
+2. Type `RN_COOKIE=` in the file and paste the copied value
+3. If the file is not in your project's directory, make sure to specify it
+```py
+rnl = RecNetLogin(env_path="")  # Env path defaults to local directory
+```
+
+# Usage
+
+### Getting your token
+```py
+from RecNetLogin import RecNetLogin
+
+rnl = RecNetLogin()
+token = rnl.get_token()
+decoded_token = rnl.get_decoded_token()
+print(token, decoded_token)
+```
