@@ -8,6 +8,10 @@ For more information, read the README https://github.com/Jegarde/RecNet-Login/
 """
 
 rnl = RecNetLogin()
+
 token = rnl.get_token()
 decoded_token = rnl.get_decoded_token()
 print(token, decoded_token)
+
+# Close the client once done
+rnl.close()

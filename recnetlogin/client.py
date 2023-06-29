@@ -88,6 +88,10 @@ class RecNetLogin:
 
         return f"Bearer {self.token}" if include_bearer else self.token
     
+    def close(self) -> None:
+        """Closes the HTTPX client."""
+        self.client.close()
+
     def __decode_token(self, token: str) -> dict:
         """Decodes bearer tokens
 
@@ -116,3 +120,5 @@ if __name__ == "__main__":
 
     for key, value in r.json().items():
         print(f"{key} = {value}")
+
+    rnl.close()
