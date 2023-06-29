@@ -15,9 +15,9 @@ pip installation soon.
 
 # Setup
 ### Gathering your ASP.NET Core Identity
-1. Login to [RecNet](https://rec.net/)
+1. Login to [RecNet](https://rec.net/). While logging in, make sure you toggle on "Remember me / my machine".
 2. Open your browser's DevTools (Inspect Element)
-3. Open the `Storage` tab on the top
+3. Open the `Storage` or `Application` tab on the top
 4. Locate `Cookies` > `https://auth.rec.net` on the directory
 5. Paste in `.AspNetCore.Identity.Application` to the filter or manually search for it
 6. Double click the value and copy it 
