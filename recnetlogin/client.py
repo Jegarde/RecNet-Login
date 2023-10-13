@@ -41,8 +41,18 @@ class RecNetLogin:
         # Initialize attributes
         self.__cookie: dict = {".AspNetCore.Identity.Application": cookie}
         self.client: httpx.Client = httpx.Client(cookies=self.__cookie)
-        self.__token: str = None
+
+        # Fetch tokens
+        self.__token: str = ""
         self.decoded_token: dict = {}
+
+        self.get_token()
+        self.get_decoded_token()
+
+        # Update client headers
+        self.client.headers = {
+            "Authorization": f"Bearer {self.__token}" 
+        }
 
     def get_decoded_token(self) -> Optional[dict]:
         """Returns a decoded bearer token
@@ -78,15 +88,15 @@ class RecNetLogin:
             parsed_url = urlparse(str(r.url))
 
             try:
-                self.token = parse_qs(parsed_url.fragment)['access_token'][0]  # Acquire the bearer token from the URL
+                self.__token = parse_qs(parsed_url.fragment)['access_token'][0]  # Acquire the bearer token from the URL
             except KeyError:
                 # The cookie has expired or is invalid
                 raise InvalidLocalCookie if self.is_local else InvalidSystemCookie
 
             # Decode it for later
-            self.decoded_token = self.__decode_token(self.token)
+            self.decoded_token = self.__decode_token(self.__token)
 
-        return f"Bearer {self.token}" if include_bearer else self.token
+        return f"Bearer {self.__token}" if include_bearer else self.__token
     
     def close(self) -> None:
         """Closes the HTTPX client."""
