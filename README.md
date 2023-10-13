@@ -1,8 +1,10 @@
 # RecNet-Login 2
-This is a Python package that allows you to acquire your [RecNet](https://rec.net/) bearer token and more with your ASP.NET Core Identity!
+This is a Python package that allows you to acquire your [RecNet](https://rec.net/) bearer token and more with your cookie! 🍪
+
 This is a rewritten version. Previous versions do not work anymore.
 
 # Features
+- No more account credentials!
 - Automatically renewing token
 - Supports 2FA accounts
 - Decoding the bearer token
@@ -11,7 +13,7 @@ This is a rewritten version. Previous versions do not work anymore.
 # Installation
 Download the recnetlogin folder and place it in your project.
 
-pip installation soon.
+pip installation once this is stable.
 
 # Setup
 ### Gathering your ASP.NET Core Identity
@@ -19,11 +21,11 @@ pip installation soon.
 2. Open your browser's DevTools (Inspect Element)
 3. Open the `Storage` or `Application` tab on the top
 4. Locate `Cookies` > `https://auth.rec.net` on the directory
-5. Paste in `.AspNetCore.Identity.Application` to the filter or manually search for it
+5. Search for `.AspNetCore.Identity.Application` by filtering the cookies
 6. Double click the value and copy it 
 ![image](https://github.com/Jegarde/RecNet-Login/assets/13438202/1fa41865-f8e4-43d8-9749-5b8dec070e93)
 
-### Option 1/2 Storing it in your environment variables (Windows)
+### Option 1/2: Storing it in your environment variables (Windows)
 1. Search for environment variables and open the first result
 
 ![image](https://github.com/Jegarde/RecNet-Login/assets/13438202/c35ebeb9-de31-46ba-a264-f02138560321)
@@ -44,9 +46,12 @@ pip installation soon.
 
 6. Restart your computer for it to take effect
 
-### Option 2/2 Storing it in a .env.secret file
+### Option 2/2: Storing it in a .env.secret file
 1. Make a new file named `.env.secret` in your project's directory
 2. Type `RN_COOKIE=` in the file and paste the copied value
+
+![image](https://github.com/Jegarde/RecNet-Login/assets/13438202/f6ffe81c-a810-4651-bbc6-5019bba71a0c)
+
 3. If the file is not in your project's directory, make sure to specify it
 ```py
 rnl = RecNetLogin(env_path="")  # Env path defaults to local directory
